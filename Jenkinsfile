@@ -23,7 +23,7 @@ pipeline {
         
         stage('git clone') {
             steps {
-                sh 'git clone https://github.com/santhosh1994m/DEMO_ECS_S3_Dynamo_Terraform_Code.git'
+                sh 'git clone https://github.com/santhosh1994m/EC2.git'
             }
         }
         
@@ -37,14 +37,14 @@ pipeline {
             steps {
                //sh 'cd  /var/lib/jenkins/workspace/'ECS - AWS - TERRAFORM'/DEMO_ECS_S3_Dynamo_Terraform_Code && sudo mkdir .terraform &&  sudo  terraform init '
          //       withAWS(region:'us-west-2',credentials:'AWS_credentials'){
-               sh 'sudo /usr/local/bin/terraform init ./DEMO_ECS_S3_Dynamo_Terraform_Code'
+               sh 'sudo /usr/local/bin/terraform init ./EC2'
          //       }
             }
         }
         stage('terraform plan') {
             steps {
            //     withAWS(region:'us-west-2',credentials:'AWS_credentials'){
-               sh 'sudo /usr/local/bin/terraform plan ./DEMO_ECS_S3_Dynamo_Terraform_Code'
+               sh 'sudo /usr/local/bin/terraform plan ./EC2'
            //     }
             }
         }
