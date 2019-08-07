@@ -50,7 +50,7 @@ pipeline {
         }
         stage('terraform apply'){
             steps{
-               sh ''sudo /usr/local/bin/terraform apply -auto-approve ./EC2''
+               sh 'sudo /usr/local/bin/terraform apply -auto-approve ./EC2'
             }
         }
         
