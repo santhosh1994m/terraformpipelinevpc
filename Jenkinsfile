@@ -17,7 +17,7 @@ pipeline {
         
         stage('chage path') {
             steps {
-                sh 'if [ -d DEMO_ECS_S3_Dynamo_Terraform_Code ]; then  rm -rf DEMO_ECS_S3_Dynamo_Terraform_Code; fi'
+                sh 'if [ -d EC2 ]; then  rm -rf EC2; fi'
             }
         }
         
