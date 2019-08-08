@@ -35,23 +35,22 @@ pipeline {
         
         stage('terraform init') {
             steps {
-               //sh 'cd  /var/lib/jenkins/workspace/'ECS - AWS - TERRAFORM'/DEMO_ECS_S3_Dynamo_Terraform_Code && sudo mkdir .terraform &&  sudo  terraform init '
-         //       withAWS(region:'us-west-2',credentials:'AWS_credentials'){
+             
                sh 'sudo /usr/local/bin/terraform init ./EC2'
-         //       }
+       
             }
         }
        // stage('terraform workspace new') {
         //    steps {
-           //     withAWS(region:'us-west-2',credentials:'AWS_credentials'){
+           
          //      sh 'sudo /usr/local/bin/terraform workspace new QA ./EC2'
-           //     }
+          
         //    }
       //  }
         
-       stage('terraform workspace select ') {
+       stage('terraform workspace select') {
            steps {
-               withAWS(region:'us-west-2',credentials:'AWS_credentials'){
+               {
                sh 'sudo /usr/local/bin/terraform workspace select QA ./EC2'
                }
             }
@@ -60,9 +59,9 @@ pipeline {
         
         stage('terraform plan') {
             steps {
-           //     withAWS(region:'us-west-2',credentials:'AWS_credentials'){
+          
                sh 'sudo /usr/local/bin/terraform plan ./EC2'
-           //     }
+         
             }
         }
       //  stage('terraform apply'){
