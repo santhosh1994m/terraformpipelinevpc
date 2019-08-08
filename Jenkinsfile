@@ -50,9 +50,9 @@ pipeline {
         
        stage('terraform workspace select') {
            steps {
-               {
+               
                sh 'sudo /usr/local/bin/terraform workspace select QA ./EC2'
-               }
+               
             }
        }
         
