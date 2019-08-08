@@ -41,14 +41,21 @@ pipeline {
          //       }
             }
         }
-        stage('terraform workspace') {
+        stage('terraform workspace new') {
             steps {
            //     withAWS(region:'us-west-2',credentials:'AWS_credentials'){
-               sh 'sudo /usr/local/bin/terraform workspace QA ./EC2'
+               sh 'sudo /usr/local/bin/terraform workspace new QA ./EC2'
            //     }
             }
         }
         
+      //  stage('terraform workspace select ') {
+      //      steps {
+           //     withAWS(region:'us-west-2',credentials:'AWS_credentials'){
+       //        sh 'sudo /usr/local/bin/terraform workspace select QA ./EC2'
+           //     }
+        //    }
+      //  }
         
         
         stage('terraform plan') {
