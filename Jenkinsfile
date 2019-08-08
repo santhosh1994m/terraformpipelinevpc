@@ -41,21 +41,21 @@ pipeline {
          //       }
             }
         }
-        stage('terraform workspace new') {
-            steps {
+       // stage('terraform workspace new') {
+        //    steps {
            //     withAWS(region:'us-west-2',credentials:'AWS_credentials'){
-               sh 'sudo /usr/local/bin/terraform workspace new QA ./EC2'
-           //     }
-            }
-        }
-        
-      //  stage('terraform workspace select ') {
-      //      steps {
-           //     withAWS(region:'us-west-2',credentials:'AWS_credentials'){
-       //        sh 'sudo /usr/local/bin/terraform workspace select QA ./EC2'
+         //      sh 'sudo /usr/local/bin/terraform workspace new QA ./EC2'
            //     }
         //    }
       //  }
+        
+       stage('terraform workspace select ') {
+           steps {
+               withAWS(region:'us-west-2',credentials:'AWS_credentials'){
+               sh 'sudo /usr/local/bin/terraform workspace select QA ./EC2'
+               }
+            }
+       }
         
         
         stage('terraform plan') {
@@ -65,16 +65,16 @@ pipeline {
            //     }
             }
         }
-        stage('terraform apply'){
-            steps{
-               sh 'sudo /usr/local/bin/terraform apply -auto-approve ./EC2'
+      //  stage('terraform apply'){
+      //      steps{
+     //          sh 'sudo /usr/local/bin/terraform apply -auto-approve ./EC2'
+       //     }
+      //  }
+       stage('terraform destroy'){
+           steps{
+               sh 'sudo /usr/local/bin/terraform destroy -auto-approve ./EC2'
             }
         }
-      // stage('terraform destroy'){
-        //   steps{
-          //     sh 'sudo /usr/local/bin/terraform destroy -auto-approve ./EC2'
-            //}
-       // }
         
         stage('terraform ended') {
             steps {
